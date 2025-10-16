@@ -3,5 +3,5 @@ export default function Footer() {
         <footer>
             © 2025 Idle Game by Liza and Juno
         </footer>
-    )
+    );
 }

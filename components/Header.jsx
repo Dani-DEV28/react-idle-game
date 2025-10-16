@@ -3,5 +3,5 @@ export default function Header(){
         <header>
             <h1>Cookie Clicker</h1>
         </header>
-    )
+    );
 }

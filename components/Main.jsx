@@ -18,7 +18,6 @@ export default function Main() {
                 <button className="plus" onClick={clicked}>{count}</button>
             </div>
         </main>
-        
     )
 }
 

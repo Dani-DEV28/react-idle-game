@@ -1,3 +1,8 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevents horizontal scroll */
+}
 body {
   background-color: aquamarine;
 }
@@ -17,4 +22,25 @@ button {
   background-color: #61dafb;
   border: none;
   transition: 0.2s;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.item {
+  width: 210px;
+  border: 1px solid rgba(104, 172, 181, 0.75);
+  border-radius: 10px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
 }

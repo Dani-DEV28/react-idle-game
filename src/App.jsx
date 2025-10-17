@@ -5,32 +5,53 @@ import "./index.css";
 
 export default function App() {
   const [clickCount, setClickCount] = useState(0);
-  const [rewards, setRewards] = useState([]);
+  const [reward, setReward] = useState(null);
+  const [inventory, setInventory] = useState([]);
+
 
   const handleClick = () => {
     const newCount = clickCount + 1;
     setClickCount(newCount);
 
+    let rewardMessage = "";
+    let newItem = null;
+
     // Rewards
-    if (newCount === 10) setRewards([...rewards, "You get an ice cream 🍦"]);
-    if (newCount === 50) setRewards([...rewards, "A bowl of soup 🍲"]);
-    if (newCount === 100) setRewards([...rewards, "Here's your burger... 🍔 "]);
+    if (newCount === 10) {
+      rewardMessage = "You got an ice cream 🍦!";
+      newItem = {emoji: "🍦"};
+    } else if (newCount === 50) {
+      rewardMessage = "You got a bowl of soup 🍲!";
+      newItem = {emoji: "🍲"};
+    } else if (newCount === 100) {
+      rewardMessage = "You got a burger! 🍔";
+      newItem = {emoji: "🍔"};
+    }
+
+    if (rewardMessage && newItem) {
+      setReward(rewardMessage);
+      setInventory((prev) => [...prev, newItem]);
+    }
   };
 
   return (
     <div className="app">
       <Header />
       <main>
-        <h1>Idle Clicker Game</h1>
         <p>Total Clicks: {clickCount}</p>
         <button onClick={handleClick}>Click Me!</button>
 
-        <h2>Rewards:</h2>
-        <ul>
-          {rewards.map((reward, index) => (
-            <li key={index}>{reward}</li>
-          ))}
-        </ul>
+        {clickCount >= 100 && <h2>You Won! 🎉</h2>}
+        <div className="container">
+          <div className="item">
+            <h3>Reward:</h3>
+            <p>{reward}</p>
+          </div>
+          <div className="item">
+            <h3>Inventory:</h3>
+            <p>{inventory.map((item, index) => item.emoji).join(" ")}</p>
+          </div>
+        </div>
       </main>
       <Footer />
     </div>

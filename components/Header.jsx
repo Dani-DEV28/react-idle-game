@@ -1,7 +1,7 @@
 export default function Header(){
     return (
         <header>
-            <h1>Cookie Clicker</h1>
+            <h1>Idle Clicker Game</h1>
         </header>
     );
 }

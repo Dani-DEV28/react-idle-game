@@ -2,12 +2,14 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./index.css";
+import Inventory from "../components/Inventory";
+import Reward from "../components/Reward";
+import Clicks from "../components/Clicks";
 
 export default function App() {
   const [clickCount, setClickCount] = useState(0);
   const [reward, setReward] = useState(null);
   const [inventory, setInventory] = useState([]);
-
 
   const handleClick = () => {
     const newCount = clickCount + 1;
@@ -16,16 +18,16 @@ export default function App() {
     let rewardMessage = "";
     let newItem = null;
 
-    // Rewards
+    // Rewards logic
     if (newCount === 10) {
       rewardMessage = "You got an ice cream 🍦!";
-      newItem = {emoji: "🍦"};
+      newItem = { emoji: "🍦" };
     } else if (newCount === 50) {
       rewardMessage = "You got a bowl of soup 🍲!";
-      newItem = {emoji: "🍲"};
+      newItem = { emoji: "🍲" };
     } else if (newCount === 100) {
       rewardMessage = "You got a burger! 🍔";
-      newItem = {emoji: "🍔"};
+      newItem = { emoji: "🍔" };
     }
 
     if (rewardMessage && newItem) {
@@ -38,19 +40,10 @@ export default function App() {
     <div className="app">
       <Header />
       <main>
-        <p>Total Clicks: {clickCount}</p>
-        <button onClick={handleClick}>Click Me!</button>
-
-        {clickCount >= 100 && <h2>You Won! 🎉</h2>}
+        <Clicks clickCount={clickCount} handleClick={handleClick} />
         <div className="container">
-          <div className="item">
-            <h3>Reward:</h3>
-            <p>{reward}</p>
-          </div>
-          <div className="item">
-            <h3>Inventory:</h3>
-            <p>{inventory.map((item, index) => item.emoji).join(" ")}</p>
-          </div>
+          <Reward reward={reward} />
+          <Inventory inventory={inventory} />
         </div>
       </main>
       <Footer />

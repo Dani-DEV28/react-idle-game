@@ -8,7 +8,6 @@ import Clicks from "../components/Clicks";
 
 export default function App() {
   const [clickCount, setClickCount] = useState(0);
-  const [reward, setReward] = useState(null);
   const [inventory, setInventory] = useState([]);
 
   const handleClick = () => {

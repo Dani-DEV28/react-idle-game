@@ -9,13 +9,14 @@ import Clicks from "../components/Clicks";
 export default function App() {
   const [clickCount, setClickCount] = useState(0);
   const [inventory, setInventory] = useState([]);
+  const [reward, setReward] = useState("")
 
   const handleClick = () => {
     const newCount = clickCount + 1;
     setClickCount(newCount);
 
     let rewardMessage = "";
-    let newItem = null;
+    let newItem;
 
     // Rewards logic
     if (newCount === 10) {

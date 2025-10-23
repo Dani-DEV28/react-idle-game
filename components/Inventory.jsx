@@ -1,4 +1,4 @@
-export default function Inventory({prop}) {
+    export default function Inventory({inventory}) {
     return (
         <div className="item">
             <h3>Inventory:</h3>
